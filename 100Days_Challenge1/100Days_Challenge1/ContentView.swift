@@ -10,25 +10,67 @@ import SwiftUI
 
 struct ContentView: View {
 
-//    let unitTypes = ["Temp", "Length"]
+    let unitTypes = ["Temp", "Length", "Time", "Volume"]
     let tempUnits = ["Celsius", "Fahrenheit", "Kelvin"]
-    let lengthUnits = ["Meters", "Kilometers", "Feet", "Yards", "Miles"]
+    let tempConversions = [
+        "Celsius" : UnitTemperature.celsius,
+        "Fahrenheit": UnitTemperature.fahrenheit,
+        "Kelvin": UnitTemperature.kelvin
+    ]
 
-//    @State var conversionType: Int = 0
+    let lengthUnits = ["Meters", "Kilometers", "Feet", "Yards", "Miles"]
+    let lengthConversions = [
+        "Meters": UnitLength.meters,
+        "Kilometers": UnitLength.kilometers,
+        "Feet": UnitLength.feet,
+        "Yards": UnitLength.yards,
+        "Miles": UnitLength.miles
+    ]
+
+    let timeUnits = ["Seconds", "Minutes", "Hours"]
+    let timeConversions = [
+        "Seconds": UnitDuration.seconds,
+        "Minutes": UnitDuration.minutes,
+        "Hours": UnitDuration.hours
+    ]
+
+    let volumeUnits = ["Milliliters", "Liters", "Cups", "Pints", "Gallons"]
+    let volumeConversions = [
+        "Milliliters": UnitVolume.milliliters,
+        "Liters": UnitVolume.liters,
+        "Cups": UnitVolume.cups,
+        "Pints": UnitVolume.pints,
+        "Gallons": UnitVolume.gallons
+    ]
+
+    @State var conversionType: Int = 0
     @State var fromUnit: Int = 0
     @State var toUnit: Int = 0
     @State var value: String = "0"
 
-    var units = ["Celsius", "Fahrenheit", "Kelvin"]
-//    var units:[String] {
-//        get {
-//            switch conversionType {
-//            case 0: return tempUnits
-//            case 1: return lengthUnits
-//            default: return ["Unknown"]
-//            }
-//        }
-//    }
+    var fromUnitKey: String {
+        get {
+            switch conversionType {
+            case 0: return tempUnits[fromUnit]
+            case 1: return lengthUnits[fromUnit]
+            case 2: return timeUnits[fromUnit]
+            case 3: return volumeUnits[fromUnit]
+            default: return "Missing"
+            }
+        }
+    }
+
+    var toUnitKey: String {
+        get {
+            switch conversionType {
+            case 0: return tempUnits[toUnit]
+            case 1: return lengthUnits[toUnit]
+            case 2: return timeUnits[toUnit]
+            case 3: return volumeUnits[toUnit]
+            default: return "Missing"
+            }
+        }
+    }
 
     private let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -42,15 +84,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-//                Section(header: Text("Conversion Type")) {
-//                    UnitPicker(title: "Units", units: unitTypes, selected: $conversionType)
-//                    .pickerStyle(SegmentedPickerStyle())
-//                }
+                Section(header: Text("Conversion Type")) {
+                    UnitPicker(title: "Units", units: unitTypes, selected: $conversionType)
+                    .pickerStyle(SegmentedPickerStyle())
+                }
                 Section(header: Text("Conversion")) {
                     TextField("Value", text: $value)
                         .keyboardType(.decimalPad)
-                    UnitPicker(title: "From", units: units, selected: $fromUnit)
-                    UnitPicker(title: "To", units: units, selected: $toUnit)
+                    UnitPicker(title: "From", units: getUnits(), selected: $fromUnit)
+                    UnitPicker(title: "To", units: getUnits(), selected: $toUnit)
                 }
                 .pickerStyle(SegmentedPickerStyle())
 
@@ -62,68 +104,46 @@ struct ContentView: View {
         }
     }
 
-    func calculateConversion() -> some View {
-
-        return Text("\(tempConversion())")
-    }
-
-    func tempConversion() -> String {
-        guard Double(value) != nil else { return "Decimal values only" }
-        switch (fromUnit, toUnit) {
-        case (0,0): return "\(value)°C"
-        case (0,1): return "\(format(celsiusToFarenheit()))°F"
-        case (0,2): return "\(format(celsiusToKelvin()))K"
-
-        case (1,0): return "\(format(farenheitToCelsius()))°C"
-        case (1,1): return "\(value)°F"
-        case (1,2): return "\(format(farenheitToKelvin()))K"
-
-        case (2,0): return "\(format(kelvinToCelsius()))°C"
-        case (2,1): return "\(format(kelvinToFarenheit()))°F"
-        case (2,2): return "\(value)K"
-
-        default: return "What did you do?  I don't know!"
+    func getUnits() -> [String] {
+        switch conversionType {
+        case 0: return tempUnits
+        case 1: return lengthUnits
+        case 2: return timeUnits
+        case 3: return volumeUnits
+        default: return []
         }
     }
 
-    func format(_ value: Double) -> String {
-        return decimalFormatter.string(from: NSNumber(value: value)) ?? "???"
-    }
+    func calculateConversion() -> some View {
+        guard let value = Double(value) else {
+            return Text("Decimal values only!")
+        }
 
-    func celsiusToFarenheit() -> Double {
-        // (0°C × 9/5) + 32 = 32°F
-        guard let value = Double(value) else { return 0 }
-        return (value * (9/5)) + 32
-    }
+        var conversionsDict: [String: Dimension]?
+        switch conversionType {
+        case 0: conversionsDict = tempConversions
+        case 1: conversionsDict = lengthConversions
+        case 2: conversionsDict = timeConversions
+        case 3: conversionsDict = volumeConversions
+        default: break
+        }
 
-    func celsiusToKelvin() -> Double {
-        // 0°C + 273.15 = 273.15K
-        guard let value = Double(value) else { return 0 }
-        return value + 273.15
-    }
+        guard
+            let conversions = conversionsDict,
+            let fromUnits = conversions[fromUnitKey],
+            let toUnits = conversions[toUnitKey]
+        else {
+            return Text("Invalid units!")
+        }
 
-    func farenheitToCelsius() -> Double {
-        // (0°F − 32) × 5/9 = -17.78°C
-        guard let value = Double(value) else { return 0 }
-        return (value - 32) * (5/9)
-    }
+        let measurement = Measurement(value: value, unit: fromUnits)
+        let conversion = measurement.converted(to: toUnits)
 
-    func farenheitToKelvin() -> Double {
-        // (0°F − 32) × 5/9 + 273.15 = 255.372K
-        guard let value = Double(value) else { return 0 }
-        return (value - 32) * (5/9) + 273.15
-    }
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter = decimalFormatter
+        formatter.unitOptions = .providedUnit
 
-    func kelvinToCelsius() -> Double {
-        // 0K − 273.15 = -273.1°C
-        guard let value = Double(value) else { return 0 }
-        return value - 273.15
-    }
-
-    func kelvinToFarenheit() -> Double {
-        // (0K − 273.15) × 9/5 + 32 = -459.7°F
-        guard let value = Double(value) else { return 0 }
-        return (value - 273.15) * (9/5) + 32
+        return Text("\(formatter.string(from: conversion))")
     }
 }
 
@@ -134,7 +154,7 @@ struct UnitPicker: View {
 
     var body: some View {
         Picker(title, selection: selected) {
-            ForEach(0..<units.count) {
+            ForEach(0..<units.count, id: \.self) {
                 Text("\(self.units[$0])")
             }
         }

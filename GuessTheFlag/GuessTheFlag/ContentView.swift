@@ -21,6 +21,7 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var score = 0
 
     var body: some View {
         ZStack {
@@ -33,9 +34,11 @@ struct ContentView: View {
                     Text(countries[correctAnswer])
                         .font(.largeTitle)
                         .fontWeight(.black)
+                    Text("Current Score: \(score)")
+                        .font(.subheadline)
+                        .fontWeight(.thin)
                 }
                 .foregroundColor(.white)
-                .edgesIgnoringSafeArea([.leading, .trailing])
 
                 ForEach(0..<3) { number in
                     Button(action: {
@@ -54,7 +57,7 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingScore) {
-            Alert(title: Text(scoreTitle), message: Text("Your score is ???"), dismissButton: .default(Text("Continue")) {
+            Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) {
                 self.askQuestion()
             })
         }
@@ -62,9 +65,11 @@ struct ContentView: View {
 
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
+            score += 1
             scoreTitle = "Correct"
         } else {
-            scoreTitle = "Wrong"
+            score -= 1
+            scoreTitle = "Wrong, that is the flag for \(countries[number])"
         }
 
         showingScore = true

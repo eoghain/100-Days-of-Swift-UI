@@ -130,7 +130,6 @@ struct ContentView: View {
             .navigationBarTitle("Rock, Paper, Scissors", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
-print(UIApplication.shared.alternateIconName)
                     self.showConfig.toggle()
                 }) {
                     Image(systemName: "gear")

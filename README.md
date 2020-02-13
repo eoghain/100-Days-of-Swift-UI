@@ -5,3 +5,4 @@
 * [Days 20 - 22: Guess The Flag](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/GuessTheFlag)
 * [Days 23 - 24: Views And Modifiers](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/ViewsAndModifiers)
 * [Day 25: Rock Paper, Scissors](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/RockPaperScissors)
+* [Day 26 - 28: BetterRest](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/BetterRest)

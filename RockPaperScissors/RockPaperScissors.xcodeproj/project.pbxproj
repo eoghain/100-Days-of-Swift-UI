@@ -12,6 +12,7 @@
 		1E1AF45023F5D351003AEAFE /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF44D23F5D351003AEAFE /* paper.png */; };
 		1E1AF45223F5D3A6003AEAFE /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF45123F5D3A6003AEAFE /* rock.png */; };
 		1E1AF45623F5D3D1003AEAFE /* scissors.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF45523F5D3D1003AEAFE /* scissors.png */; };
+		1E2AAB6F23F5FE5000C98FC0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2AAB6E23F5FE5000C98FC0 /* Configuration.swift */; };
 		1E7B736A23F4B8E300AE7010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7B736923F4B8E300AE7010 /* AppDelegate.swift */; };
 		1E7B736C23F4B8E300AE7010 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7B736B23F4B8E300AE7010 /* SceneDelegate.swift */; };
 		1E7B736E23F4B8E300AE7010 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7B736D23F4B8E300AE7010 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 		1E1AF45523F5D3D1003AEAFE /* scissors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scissors.png; path = RockPaperScissors/Assets.xcassets/Scissors.imageset/scissors.png; sourceTree = SOURCE_ROOT; };
 		1E1AF45723F5D3E6003AEAFE /* scissors@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scissors@3x.png"; sourceTree = "<group>"; };
 		1E1AF45823F5D3F3003AEAFE /* scissors@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scissors@2x.png"; sourceTree = "<group>"; };
+		1E2AAB6E23F5FE5000C98FC0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		1E7B736623F4B8E300AE7010 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E7B736923F4B8E300AE7010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E7B736B23F4B8E300AE7010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				1E7B737423F4B8E700AE7010 /* LaunchScreen.storyboard */,
 				1E7B737723F4B8E700AE7010 /* Info.plist */,
 				1E7B737123F4B8E700AE7010 /* Preview Content */,
+				1E2AAB6E23F5FE5000C98FC0 /* Configuration.swift */,
 			);
 			path = RockPaperScissors;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				1E7B736A23F4B8E300AE7010 /* AppDelegate.swift in Sources */,
 				1E7B736C23F4B8E300AE7010 /* SceneDelegate.swift in Sources */,
+				1E2AAB6F23F5FE5000C98FC0 /* Configuration.swift in Sources */,
 				1E7B736E23F4B8E300AE7010 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

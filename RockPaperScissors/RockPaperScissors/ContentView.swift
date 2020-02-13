@@ -52,6 +52,8 @@ struct ContentView: View {
     @State var appScore: Int = 0
     @State var round: Int = 1
 
+    @State private var showConfig = false
+
     var body: some View {
         NavigationView {
             VStack {
@@ -117,6 +119,16 @@ struct ContentView: View {
             .padding(.top, 25)
             .edgesIgnoringSafeArea([.leading, .trailing])
             .navigationBarTitle("Rock, Paper, Scissors", displayMode: .inline)
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.showConfig.toggle()
+                }) {
+                    Image(systemName: "gear")
+                }
+                .sheet(isPresented: $showConfig) {
+                    <#code#>
+                }
+            )
         }
     }
 

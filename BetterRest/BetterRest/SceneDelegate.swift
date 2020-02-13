@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  RockPaperScissors
+//  BetterRest
 //
-//  Created by Robert Booth on 2/12/20.
+//  Created by Robert Booth on 2/13/20.
 //  Copyright © 2020 Robert Booth. All rights reserved.
 //
 
@@ -58,5 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+
+
 }
 

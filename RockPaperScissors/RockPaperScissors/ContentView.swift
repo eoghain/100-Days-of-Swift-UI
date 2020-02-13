@@ -54,7 +54,7 @@ struct ContentView: View {
             }
             .padding(.top, 25)
             .edgesIgnoringSafeArea([.leading, .trailing])
-            .navigationBarTitle("Rock, Paper, Scisors", displayMode: .inline)
+            .navigationBarTitle("Rock, Paper, Scissors", displayMode: .inline)
         }
     }
 

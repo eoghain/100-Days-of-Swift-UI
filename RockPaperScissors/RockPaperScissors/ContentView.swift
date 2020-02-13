@@ -13,6 +13,15 @@ enum Action: Int, CaseIterable {
     case paper = 1
     case scissors = 2
 
+    init?(stringValue: String) {
+        switch stringValue {
+        case "Rock", "rock": self = .rock
+        case "Paper", "paper": self = .paper
+        case "Scissors", "scissors": self = .scissors
+        default: return nil
+        }
+    }
+
     static var random: Action {
         // Force unwrap cause this can't ever fail
         // Note need to adjust the range if you ever add
@@ -121,12 +130,13 @@ struct ContentView: View {
             .navigationBarTitle("Rock, Paper, Scissors", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
+print(UIApplication.shared.alternateIconName)
                     self.showConfig.toggle()
                 }) {
                     Image(systemName: "gear")
                 }
                 .sheet(isPresented: $showConfig) {
-                    <#code#>
+                    ConfigurationView()
                 }
             )
         }

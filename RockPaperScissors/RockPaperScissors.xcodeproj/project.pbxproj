@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1AF44E23F5D351003AEAFE /* paper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF44B23F5D351003AEAFE /* paper@2x.png */; };
+		1E1AF44F23F5D351003AEAFE /* paper@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF44C23F5D351003AEAFE /* paper@3x.png */; };
+		1E1AF45023F5D351003AEAFE /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF44D23F5D351003AEAFE /* paper.png */; };
+		1E1AF45223F5D3A6003AEAFE /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF45123F5D3A6003AEAFE /* rock.png */; };
+		1E1AF45623F5D3D1003AEAFE /* scissors.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AF45523F5D3D1003AEAFE /* scissors.png */; };
 		1E7B736A23F4B8E300AE7010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7B736923F4B8E300AE7010 /* AppDelegate.swift */; };
 		1E7B736C23F4B8E300AE7010 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7B736B23F4B8E300AE7010 /* SceneDelegate.swift */; };
 		1E7B736E23F4B8E300AE7010 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7B736D23F4B8E300AE7010 /* ContentView.swift */; };
@@ -16,6 +21,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1AF44B23F5D351003AEAFE /* paper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper@2x.png"; path = "RockPaperScissors/Assets.xcassets/Paper.imageset/paper@2x.png"; sourceTree = SOURCE_ROOT; };
+		1E1AF44C23F5D351003AEAFE /* paper@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper@3x.png"; path = "RockPaperScissors/Assets.xcassets/Paper.imageset/paper@3x.png"; sourceTree = SOURCE_ROOT; };
+		1E1AF44D23F5D351003AEAFE /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = RockPaperScissors/Assets.xcassets/Paper.imageset/paper.png; sourceTree = SOURCE_ROOT; };
+		1E1AF45123F5D3A6003AEAFE /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rock.png; path = RockPaperScissors/Assets.xcassets/Rock.imageset/rock.png; sourceTree = SOURCE_ROOT; };
+		1E1AF45323F5D3AA003AEAFE /* rock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock@2x.png"; sourceTree = "<group>"; };
+		1E1AF45423F5D3B5003AEAFE /* rock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock@3x.png"; sourceTree = "<group>"; };
+		1E1AF45523F5D3D1003AEAFE /* scissors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scissors.png; path = RockPaperScissors/Assets.xcassets/Scissors.imageset/scissors.png; sourceTree = SOURCE_ROOT; };
+		1E1AF45723F5D3E6003AEAFE /* scissors@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scissors@3x.png"; sourceTree = "<group>"; };
+		1E1AF45823F5D3F3003AEAFE /* scissors@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scissors@2x.png"; sourceTree = "<group>"; };
 		1E7B736623F4B8E300AE7010 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E7B736923F4B8E300AE7010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E7B736B23F4B8E300AE7010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +51,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E1AF44A23F5D31C003AEAFE /* App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				1E1AF45523F5D3D1003AEAFE /* scissors.png */,
+				1E1AF45823F5D3F3003AEAFE /* scissors@2x.png */,
+				1E1AF45723F5D3E6003AEAFE /* scissors@3x.png */,
+				1E1AF45123F5D3A6003AEAFE /* rock.png */,
+				1E1AF45423F5D3B5003AEAFE /* rock@3x.png */,
+				1E1AF45323F5D3AA003AEAFE /* rock@2x.png */,
+				1E1AF44D23F5D351003AEAFE /* paper.png */,
+				1E1AF44B23F5D351003AEAFE /* paper@2x.png */,
+				1E1AF44C23F5D351003AEAFE /* paper@3x.png */,
+			);
+			path = "App Icons";
+			sourceTree = "<group>";
+		};
 		1E7B735D23F4B8E300AE7010 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +86,7 @@
 		1E7B736823F4B8E300AE7010 /* RockPaperScissors */ = {
 			isa = PBXGroup;
 			children = (
+				1E1AF44A23F5D31C003AEAFE /* App Icons */,
 				1E7B736923F4B8E300AE7010 /* AppDelegate.swift */,
 				1E7B736B23F4B8E300AE7010 /* SceneDelegate.swift */,
 				1E7B736D23F4B8E300AE7010 /* ContentView.swift */,
@@ -133,7 +164,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1AF45623F5D3D1003AEAFE /* scissors.png in Resources */,
+				1E1AF45023F5D351003AEAFE /* paper.png in Resources */,
 				1E7B737623F4B8E700AE7010 /* LaunchScreen.storyboard in Resources */,
+				1E1AF44F23F5D351003AEAFE /* paper@3x.png in Resources */,
+				1E1AF45223F5D3A6003AEAFE /* rock.png in Resources */,
+				1E1AF44E23F5D351003AEAFE /* paper@2x.png in Resources */,
 				1E7B737323F4B8E700AE7010 /* Preview Assets.xcassets in Resources */,
 				1E7B737023F4B8E700AE7010 /* Assets.xcassets in Resources */,
 			);
@@ -286,6 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"RockPaperScissors/Preview Content\"";
+				DEVELOPMENT_TEAM = 9C5R4TQX7A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RockPaperScissors/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -305,6 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"RockPaperScissors/Preview Content\"";
+				DEVELOPMENT_TEAM = 9C5R4TQX7A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RockPaperScissors/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

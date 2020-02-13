@@ -11,11 +11,23 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
+    }
+
+    // Doesn't get called for some reason.  Need to research.
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        guard UIApplication.shared.supportsAlternateIcons else { return }
+
+        let iconName = Action.random.imageName
+        UIApplication.shared.setAlternateIconName(iconName, completionHandler: { (error) in
+            if let error = error {
+                print("App icon failed to change due to \(error.localizedDescription)")
+            } else {
+                print("App icon changed successfully")
+            }
+        })
     }
 
     // MARK: UISceneSession Lifecycle

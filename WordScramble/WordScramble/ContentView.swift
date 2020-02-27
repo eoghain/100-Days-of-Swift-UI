@@ -29,7 +29,10 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+
+                Text("Score: \(usedWords.count)")
             }
+            .navigationBarItems(trailing: Button("New Game", action: startGame))
             .navigationBarTitle(rootWord)
             .onAppear(perform: startGame)
             .alert(isPresented: $showingError) {
@@ -63,6 +66,8 @@ struct ContentView: View {
     }
 
     func isOriginal(word: String) -> Bool {
+        guard word != rootWord else { return false }
+
         // Returns true only if word doesn't exist in usedWords
         return usedWords.contains(word) == false
     }
@@ -82,6 +87,7 @@ struct ContentView: View {
     }
 
     func isReal(word: String) -> Bool {
+        guard word.count >= 3 else { return false }
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")

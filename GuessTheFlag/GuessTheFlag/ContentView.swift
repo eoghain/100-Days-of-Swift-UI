@@ -22,6 +22,9 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score = 0
+    @State private var animationAmount = 0.0
+    @State private var animateFlag = -1
+    @State private var opacityValue = 1.0
 
     var body: some View {
         ZStack {
@@ -42,15 +45,22 @@ struct ContentView: View {
 
                 ForEach(0..<3) { number in
                     Button(action: {
-                        self.flagTapped(number)
+                        if self.flagTapped(number) {
+                            withAnimation(.default) {
+                                self.animationAmount += 360
+                                self.opacityValue = 0.25
+                            }
+                        }
                     }) {
                         Image(self.countries[number])
                             .renderingMode(.original)
                             .clipShape(Capsule())
                             .overlay(Capsule().stroke(Color.black, lineWidth: 1))
                             .shadow(color: .black, radius: 2)
+                            .rotation3DEffect(.degrees(self.animateFlag == number ? self.animationAmount : 0), axis: (x: 0, y: 1, z: 0) )
                     }
-                    .buttonStyle(ScaleButtonStyle())
+                    .opacity(self.animateFlag == number ? 1 : self.opacityValue)
+//                    .buttonStyle(ScaleButtonStyle())
                 }
 
                 Spacer()
@@ -63,21 +73,28 @@ struct ContentView: View {
         }
     }
 
-    func flagTapped(_ number: Int) {
+    func flagTapped(_ number: Int) -> Bool {
+        showingScore = true
+
         if number == correctAnswer {
             score += 1
             scoreTitle = "Correct"
-        } else {
-            score -= 1
-            scoreTitle = "Wrong, that is the flag for \(countries[number])"
+            animateFlag = number
+            return true
         }
 
-        showingScore = true
+        score -= 1
+        scoreTitle = "Wrong, that is the flag for \(countries[number])"
+
+        return false
     }
 
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        animationAmount = 0
+        animateFlag = -1
+        opacityValue = 1.0
     }
 }
 

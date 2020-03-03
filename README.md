@@ -6,3 +6,4 @@
 * [Days 23 - 24: Views And Modifiers](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/ViewsAndModifiers)
 * [Day 25: Rock Paper, Scissors](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/RockPaperScissors)
 * [Day 26 - 28: BetterRest](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/BetterRest)
+* [Day 32 - 34: Animations](https://github.com/eoghain/100-Days-of-Swift-UI/tree/master/Animations)
